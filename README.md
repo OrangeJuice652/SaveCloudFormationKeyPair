@@ -1,0 +1,2 @@
+# SaveCloudFormationKeyPair
+AWSCloudFormationで生成したkeypairについて、privateキーをローカルに保存するスクリプト
