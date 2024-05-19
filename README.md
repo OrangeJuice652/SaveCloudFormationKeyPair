@@ -3,8 +3,8 @@ AWS CloudFormationで生成したキーペアについて、プライベート�
 
 ## 概要
 - AWS CLIでパラメータストア内に記載されたプライベートキーを取得し、~/.ssh内にプライベートキーファイルを作成するスクリプト。
-- 前提
-  - CloudFormationのスタック作成時に、キーペアIDを出力している。
+- 本スクリプトを使用する上での前提
+  - CloudFormation上で、キーペアを発行している。
 
 - CloudFormationテンプレートExample
 ```
@@ -26,9 +26,9 @@ Outputs:
     Value: !GetAtt MyKeyPair.KeyPairId
 ```
 
-- CloudFormationで作成されてたキーペアの基礎知識
+- CloudFormationで作成されたキーペアの基礎知識
   - AWS CloudFormation上で、EC2のキーペアを作成した際、プライベートキーは、パラメータストアに保存される。
-    - パラメータストアが作成されるパラメータストア名: /ec2/keypair/<キーペアのID>
+    - パラメータストアで作成されるキーペアのパラメータストア名: /ec2/keypair/<キーペアのID>
 
 ## コマンド
 
@@ -38,5 +38,5 @@ save_cloudformation_keypair.sh <取得したいCloudFormationスタック名> <�
 
 ### 引数
 1.  $1: キーペアIDを取得したいCloudFormationスタック名
-2.  $2: CloudFormationスタック作成時出力されたキーペアIDの出力キー名
+2.  $2: CloudFormationスタック作成時、出力されたキーペアIDの出力キー名
 3.  $3: ~/.sshに保存する保存キーペア名
